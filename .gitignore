@@ -11,3 +11,5 @@ coverage/
 .freebuff/
 
 data/*.json
+
+.vercel/
