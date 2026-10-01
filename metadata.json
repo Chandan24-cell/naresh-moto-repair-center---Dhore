@@ -1,0 +1,6 @@
+{
+  "name": "Naresh Moto Repair Center - Dhore",
+  "description": "Premier motorcycle and two-wheeler repair, servicing, and genuine parts center in Dhore, Nepal. Open daily 6:00 AM - 8:00 PM.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

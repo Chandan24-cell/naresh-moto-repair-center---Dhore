@@ -1,0 +1,570 @@
+{
+  "nav": {
+    "home": "Home",
+    "whatWeFix": "What We Fix",
+    "services": "Services",
+    "whyUs": "Why Us",
+    "howItWorks": "How It Works",
+    "packages": "Packages",
+    "gallery": "Gallery",
+    "community": "Community",
+    "reviews": "Reviews",
+    "about": "About Team",
+    "tips": "Riding Tips",
+    "contact": "Contact",
+    "bookService": "Book Service",
+    "openNow": "Open Now",
+    "closed": "Closed",
+    "callNow": "Call Workshop"
+  },
+  "theme": {
+    "lightMode": "Switch to Clean Light Theme",
+    "darkMode": "Switch to Dark Garage Theme",
+    "toggleAria": "Toggle Light or Dark Theme"
+  },
+  "announcements": {
+    "morning": "🌅 Good Morning! Early bay drop-offs open from 6:00 AM · Beat the workday rush",
+    "afternoon": "☀️ Peak Riding Hours · 15-Min Quick Diagnostics & Oil Changes Active",
+    "evening": "🌙 Evening Commuter Service & Fast Chain Lubrication open until 8:00 PM",
+    "promo": "🛠️ Free brake check with every General Periodic Service this week!",
+    "liveQueue": "⭐ Rated 4.5/5 by 500+ riders across Dhore & Pakahamainpur",
+    "emergency": "📞 Roadside Breakdown or flat tyre near Dhore? Call +977 982-9455583 immediately",
+    "actionBook": "Book Slot",
+    "actionCall": "Call Now",
+    "actionChat": "WhatsApp"
+  },
+  "hero": {
+    "badge": "Open Now · 6:00 AM – 8:00 PM Every Day",
+    "location": "Dhore pakahamainpur - 1, Dhore, Nepal",
+    "reviewsCount": "(148+ Google Reviews)",
+    "titlePrefix": "Precision Two-Wheeler Repair & Servicing in",
+    "titleCity": "Dhore",
+    "subtitle": "From morning commuters on Splendors and Pulsars to highway riders, we provide expert engine overhauls, carburetion, brake calibration, and electrical fault-finding with 100% genuine parts and zero guesswork.",
+    "callCta": "Call Now: +977 982-9455583",
+    "directionsCta": "Get Directions (Live Map)",
+    "bookSlotCta": "Book Repair Slot",
+    "statBikes": "Bikes Repaired",
+    "statYears": "Workshop Heritage",
+    "statRating": "Google Maps Rating",
+    "statParts": "Genuine Spare Parts"
+  },
+  "whatRolls": {
+    "kicker": "WHAT ROLLS THROUGH OUR DOOR",
+    "headline": "BACK ON THE ROAD.",
+    "subhead": "From the first kick to the last turn of the key, we handle the everyday jobs that keep two-wheelers useful and reliable.",
+    "calloutKicker": "Guaranteed Diagnostic",
+    "calloutHeadline": "BRING THE PROBLEM. WE'LL FIND THE NEXT STEP.",
+    "calloutSub": "No guesswork, no replacing parts you don't need. Clear cost estimates before any wrench touches your bike.",
+    "bookButton": "Book a Service"
+  },
+  "services": {
+    "kicker": "Full Workshop Capabilities",
+    "headline": "Services & Repair Categories",
+    "subhead": "From quick routine 30-minute adjustments to ground-up engine rebuilds, our certified workshop in Dhore handles every aspect of your ride.",
+    "tabs": {
+      "all": "All Services",
+      "routine": "Routine & Tuning",
+      "engine": "Engine & Mechanical",
+      "safety": "Brakes & Suspension",
+      "specialty": "Parts & Emergency"
+    },
+    "bookBtn": "Book Service",
+    "detailsBtn": "Details",
+    "estTime": "Est. Time",
+    "estCost": "Est. Cost"
+  },
+  "servicesData": {
+    "01-general-servicing": {
+      "title": "GENERAL SERVICING",
+      "description": "Oil, filters, adjustments, and the checks that prevent small problems becoming expensive ones.",
+      "estimatedTime": "45–60 mins",
+      "estimatedPrice": "NPR 499 – NPR 1,299",
+      "highlights": [
+        "Engine oil flush & replacement",
+        "Air & fuel filter cleaning",
+        "Spark plug clearance check",
+        "Full brake pad adjustment",
+        "Chain cleaning & lubrication"
+      ]
+    },
+    "02-engine-starting": {
+      "title": "ENGINE & STARTING",
+      "description": "Hard starts, strange sounds, low pickup, or a bike that has gone quiet.",
+      "estimatedTime": "2–4 hours",
+      "estimatedPrice": "NPR 800 – NPR 3,500",
+      "highlights": [
+        "Compression testing",
+        "Carburetor / FI tuning",
+        "Valve clearance & timing check",
+        "Clutch plate replacement",
+        "Kick & self-starter overhaul"
+      ]
+    },
+    "03-brakes-tyres": {
+      "title": "BRAKES & TYRES",
+      "description": "Brake feel, tyre changes, punctures, chain tension, and safer daily riding.",
+      "estimatedTime": "30–90 mins",
+      "estimatedPrice": "NPR 350 – NPR 1,800",
+      "highlights": [
+        "Disc & drum brake shoe replacement",
+        "Brake bleeding & hydraulic fluid check",
+        "Tyre puncture repair & new fitting",
+        "Wheel alignment & truing",
+        "Drive chain slack adjustment"
+      ]
+    },
+    "04-electrical-work": {
+      "title": "ELECTRICAL WORK",
+      "description": "Lights, battery, horn, wiring, and the little electrical faults that stop a ride.",
+      "estimatedTime": "30–60 mins",
+      "estimatedPrice": "NPR 250 – NPR 1,500",
+      "highlights": [
+        "12V battery health testing",
+        "Headlight & indicator harness fixes",
+        "Horn tuning & relay installation",
+        "Self-starter relay diagnostic",
+        "Blown fuse & short-circuit troubleshooting"
+      ]
+    },
+    "05-suspension-shocks": {
+      "title": "SUSPENSION & FORK OVERHAUL",
+      "description": "Front fork oil leakage, blown seals, bottoming out over potholes, and rear monoshock tuning.",
+      "estimatedTime": "1.5–3 hours",
+      "estimatedPrice": "NPR 650 – NPR 2,200",
+      "highlights": [
+        "Fork oil seal replacement",
+        "Hydraulic fluid refill",
+        "Bushing inspection",
+        "Rear shock damping check"
+      ]
+    },
+    "06-periodic-maintenance": {
+      "title": "PERIODIC MAINTENANCE PACKAGES",
+      "description": "Structured manufacturer-interval maintenance (3,000 km, 6,000 km, 10,000 km) for worry-free commuting.",
+      "estimatedTime": "2 hours",
+      "estimatedPrice": "NPR 1,299",
+      "highlights": [
+        "32-point inspection",
+        "All fluid checks",
+        "Cable lubrication",
+        "Nut & bolt torquing"
+      ]
+    },
+    "07-genuine-spare-parts": {
+      "title": "GENUINE SPARE PARTS FITTING",
+      "description": "Direct on-shelf inventory for Hero, Bajaj, TVS, Honda, Yamaha, and Castrol lubricants.",
+      "estimatedTime": "Immediate",
+      "estimatedPrice": "MRP + Minimal labor",
+      "highlights": [
+        "100% genuine sealed parts",
+        "Oils: Servo, Gulf, Lazer, Castrol",
+        "Spark plugs, filters, brake shoes",
+        "Factory guarantee"
+      ]
+    },
+    "08-emergency-assistance": {
+      "title": "EMERGENCY ROADSIDE BREAKDOWN",
+      "description": "Stuck in Dhore, Pakahamainpur, or Dhore outskirts with a dead bike? Call us for immediate field support.",
+      "estimatedTime": "Rapid response",
+      "estimatedPrice": "Distance based",
+      "highlights": [
+        "On-call mechanic dispatch",
+        "Jump-start assistance",
+        "Puncture repair on spot",
+        "Towing to shop if needed"
+      ]
+    }
+  },
+  "whyUs": {
+    "kicker": "Why Riders Trust Us",
+    "headline": "The Naresh Moto Advantage",
+    "subhead": "We believe motorcycle repair should be honest, transparent, and built to last on Nepal roads.",
+    "card1Title": "Zero Counterfeit Parts",
+    "card1Desc": "We exclusively source factory-sealed OEM parts from Hero, Bajaj, Honda, Yamaha, and TVS with holograms.",
+    "card2Title": "Honest Upfront Estimates",
+    "card2Desc": "No surprise bills. We inspect first, explain what is worn out, and get your approval before starting.",
+    "card3Title": "6 AM Early Bird Open",
+    "card3Desc": "Drop your motorcycle off at 6 AM on your way to work and pick it up running smoothly by evening.",
+    "card4Title": "14+ Years Master Techs",
+    "card4Desc": "Certified hands with over a decade of hands-on experience diagnosing 2-stroke and 4-stroke engines.",
+    "card5Title": "Fast Turnaround Time",
+    "card5Desc": "90% of routine periodic services and minor adjustments are completed within 45 to 60 minutes.",
+    "card6Title": "Fair Dhore Local Rates",
+    "card6Desc": "High-standard dealership quality workmanship at honest local neighborhood garage pricing."
+  },
+  "howItWorks": {
+    "kicker": "Simple & Transparent",
+    "headline": "How It Works",
+    "subhead": "From drop-off to handover, our 4-step workflow guarantees complete peace of mind.",
+    "step1Num": "01",
+    "step1Title": "Book or Walk In",
+    "step1Desc": "Schedule a guaranteed slot online or ride directly into our workshop at Dhore Pakahamainpur.",
+    "step2Num": "02",
+    "step2Title": "15-Point Diagnostic",
+    "step2Desc": "Master mechanic Naresh inspects engine, brakes, chain, electricals, and tire wear in front of you.",
+    "step3Num": "03",
+    "step3Title": "Clear Quotation & Repair",
+    "step3Desc": "We explain required work and cost upfront. Only genuine parts are installed upon your approval.",
+    "step4Num": "04",
+    "step4Title": "Road Test & Handover",
+    "step4Desc": "We test ride the machine to ensure factory smoothness before you roll back onto Dhore roads."
+  },
+  "pricing": {
+    "kicker": "Clear, Standardized Rates",
+    "headline": "Service Packages",
+    "subhead": "No guessing or surprise bills. Choose a package tailored to your bike's mileage and ride condition.",
+    "selectPkg": "Select Package",
+    "mostPopular": "Most Popular",
+    "includedTitle": "Included in package:",
+    "note": "* Prices cover thorough labor, diagnostic checks, and tuning. Replacement oils and genuine spare parts are billed transparently at retail MRP without hidden markup."
+  },
+  "pricingTiers": {
+    "tier-basic": {
+      "name": "Quick Commuter Check",
+      "tagline": "Essential tune-up for daily office & local errand riders",
+      "duration": "45 mins",
+      "features": [
+        "Engine oil inspection & top-up",
+        "Brake shoe clearance adjustment",
+        "Drive chain cleaning & tensioning",
+        "Air filter dust blow-out",
+        "Tyre pressure check & visual inspection",
+        "Spark plug cleaning"
+      ]
+    },
+    "tier-standard": {
+      "name": "Standard Periodic Service",
+      "tagline": "Our most popular comprehensive service for trouble-free riding",
+      "duration": "90–120 mins",
+      "features": [
+        "Complete engine oil flush & refill",
+        "New genuine oil filter installation",
+        "Carburetor / throttle body ultrasonic cleaning",
+        "Brake pads & shoe deep cleaning & de-glazing",
+        "Clutch cable & throttle cable free-play calibration",
+        "Battery voltage & charging circuit test",
+        "Chassis nut & bolt tightening",
+        "High-pressure wash & engine degreasing"
+      ]
+    },
+    "tier-overhaul": {
+      "name": "Master Engine & Chassis Overhaul",
+      "tagline": "Total rebuild and deep restoration for older or heavily-used two-wheelers",
+      "duration": "Full day",
+      "features": [
+        "Everything in Standard Periodic Service",
+        "Full engine compression & valve clearance setting",
+        "Front fork suspension oil & seal overhaul",
+        "Wheel bearing inspection & grease repacking",
+        "Complete wiring harness integrity scan",
+        "Fuel tank rust & sediment flush",
+        "Full road test with master mechanic Naresh",
+        "30-day post-service warranty"
+      ]
+    }
+  },
+  "gallery": {
+    "kicker": "WORKSHOP GALLERY",
+    "headline": "Inside  Workshop",
+    "subhead": "Take a closer look at the people, tools, repairs, diagnostics, servicing, and restoration work happening across our workshop.",
+    "tabAll": "All Transformations",
+    "tabWorkshop": "Workshop Bays",
+    "tabParts": "Parts & Tools",
+    "tabRepairs": "Engine & Mechanical",
+    "beforeLabel": "BEFORE",
+    "afterLabel": "AFTER",
+    "dragHint": "Drag slider to compare transformation",
+    "fullView": "View High-Res Inspection",
+    "copiedToast": "Link copied to clipboard!"
+  },
+  "socialProof": {
+    "kicker": "LIVE WORKSHOP FEED",
+    "headline": "Live From the Workshop Floor",
+    "subhead": "Real workshop activity from the Naresh MOTO service floor, from diagnostics and mechanical repairs to maintenance, servicing, and detailed restoration work.",
+    "statusServiced": "Serviced & Ready",
+    "statusInBay": "In Workshop Bay",
+    "verifiedCustomer": "Verified Rider",
+    "share": "Share",
+    "copied": "Copied"
+  },
+  "aboutTeam": {
+    "kicker": "Our Workshop Story",
+    "headline": "Built on Honest Mechanical Craftsmanship & Local Trust.",
+    "subhead": "Two-wheelers are the lifeline of Dhore and Madhesh Province. We keep them running safely every day.",
+    "storyP1": "Two-wheelers are the lifeline of Dhore and Madhesh Province. Whether you are commuting to the customs border, traveling through dusty agricultural roads, or carrying daily loads, a reliable motorcycle is essential.",
+    "storyP2": "At Naresh Moto Repair Center, we started with a straightforward promise: diagnose problems accurately, tell the owner the truth about what is worn out, use genuine factory-sealed parts, and charge fair local rates.",
+    "leadMechanic": "Lead Master Mechanic",
+    "founderRole": "Founder & Master Technician",
+    "experienceYears": "14+ years experience",
+    "meetTeamKicker": "The Hands on the Wrenches",
+    "meetTeamHeadline": "Meet the Certified Mechanics",
+    "certifiedIn": "Certified in",
+    "zeroDuplicates": "Zero Duplicate Parts",
+    "zeroDuplicatesDesc": "We refuse to install cheap duplicate parts that fail after a few weeks.",
+    "communityFirst": "Community First",
+    "communityFirstDesc": "We open early at 6 AM so local commuters never miss a day of work."
+  },
+  "teamData": {
+    "naresh-founder": {
+      "name": "Naresh Chauhan",
+      "role": "Founder & Master Technician",
+      "specialty": "Engine Diagnostics & 4-Stroke Overhauls",
+      "certifiedIn": "Certified Master Tech – Hero MotoCorp & Bajaj Auto 4-Stroke Powerplants",
+      "quote": "Every motorcycle that enters this garage belongs to someone who depends on it for their family and livelihood. We diagnose with honesty and make sure your machine runs like new before you roll back onto Dhore's roads."
+    },
+    "bikash-patel": {
+      "name": "Bikash Patel",
+      "role": "Senior Electrical & FI Specialist",
+      "specialty": "Wiring Harness, 12V Battery & EFI Troubleshooting",
+      "certifiedIn": "Bosch Automotive 12V Electricals & Electronic Fuel Injection Systems",
+      "quote": "No tape jobs or guesswork. We test circuit resistance properly and secure water-tight OEM couplers for monsoon riding."
+    },
+    "sunil-sah": {
+      "name": "Sunil Sah",
+      "role": "Suspension & Brake Calibration Tech",
+      "specialty": "Hydraulic Disc Calipers & Fork Damper Tuning",
+      "certifiedIn": "Endurance Suspension Tuning & Hydraulic Brake Fluid Safety Standards"
+    },
+    "ramesh-yadav": {
+      "name": "Ramesh Yadav",
+      "role": "Express Periodic Service Specialist",
+      "specialty": "45-Minute Periodic Maintenance & Drive Transmission",
+      "certifiedIn": "Castrol & Servo 4T Lubrication & Clutch Free-Play Calibration"
+    }
+  },
+  "faq": {
+    "kicker": "Clear Answers",
+    "headline": "Frequently Asked Questions",
+    "subhead": "Everything you need to know about bringing your two-wheeler to Naresh Moto."
+  },
+  "reviews": {
+    "kicker": "Rider Feedback",
+    "headline": "Reviews & Customer Experience",
+    "subhead": "Read what riders and daily commuters in Dhore and Madhesh Province say about their workshop visits.",
+    "writeReview": "Write a Review",
+    "hideReview": "Hide Review Form",
+    "formTitle": "Share Your Experience",
+    "authorLabel": "Your Full Name *",
+    "authorPlaceholder": "e.g. Ramesh Sah",
+    "locationLabel": "Your Location *",
+    "locationPlaceholder": "e.g. Dhore Main Road / Pakahamainpur",
+    "bikeLabel": "Bike / Scooter Model *",
+    "bikePlaceholder": "e.g. Bajaj Pulsar 150 / Honda Shine",
+    "serviceLabel": "Service Received *",
+    "ratingLabel": "Your Rating *",
+    "commentLabel": "Your Feedback / Experience *",
+    "commentPlaceholder": "Tell other riders how your bike is running after the service...",
+    "submitBtn": "Submit Review for Verification",
+    "submittingBtn": "Submitting...",
+    "successToast": "Thank you! Your review has been submitted for moderation."
+  },
+  "blog": {
+    "kicker": "Dhore Rider Knowledge Hub",
+    "headline": "Riding Tips & Maintenance Guides",
+    "subhead": "Practical advice from master mechanic Naresh to keep your two-wheeler running safely across Nepal roads.",
+    "readMore": "Read Full Guide",
+    "relatedService": "Recommended Service",
+    "writtenBy": "Written by Naresh Moto Master Technicians · Dhore",
+    "bookAssociated": "Book Associated Service Check"
+  },
+  "contact": {
+    "kicker": "Find Us in Dhore",
+    "headline": "Workshop Location & Direct Booking",
+    "subhead": "Visit our garage in Dhore Pakahamainpur or book an appointment online for immediate bay allocation.",
+    "hoursTitle": "Opening Hours",
+    "hoursEveryday": "6:00 AM – 8:00 PM (Every Day)",
+    "phoneLabel": "Direct Phone / WhatsApp",
+    "emailLabel": "Workshop Email",
+    "addressLabel": "Garage Address",
+    "plusCodeLabel": "Google Plus Code",
+    "getDirections": "Get Live Map Directions",
+    "formTitle": "Book a Service Slot",
+    "fullName": "Full Name *",
+    "phone": "Phone Number (NTC/Ncell) *",
+    "email": "Email Address (Optional)",
+    "bikeModel": "Bike / Scooter Model *",
+    "serviceType": "Service Needed *",
+    "date": "Preferred Date *",
+    "timeSlot": "Preferred Time Slot *",
+    "notes": "Additional Notes / Symptoms",
+    "submitBooking": "Confirm Appointment Slot",
+    "submitting": "Processing Booking...",
+    "successTitle": "Appointment Slot Reserved!",
+    "successDesc": "We have registered your booking. Naresh will have a service bay ready for your arrival."
+  },
+  "footer": {
+    "desc": "Dhore’s trusted two-wheeler garage for commuter motorcycles, sports bikes, and scooters. Genuine spare parts, certified repairs, and transparent pricing.",
+    "certified": "Certified 2-Wheeler Workshop",
+    "navTitle": "Quick Navigation",
+    "servicesTitle": "Core Services",
+    "contactTitle": "Workshop Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Notice",
+    "rights": "All rights reserved. Dhore, Madhesh Province, Nepal."
+  },
+  "bookingModal": {
+    "title": "Book Workshop Service Slot",
+    "subtitle": "Reserve guaranteed technician time at Naresh Moto Repair Center, Dhore.",
+    "step1": "1. Service & Bike Details",
+    "step2": "2. Date & Time Slot",
+    "step3": "3. Payment & Confirmation",
+    "fullNameLabel": "Full Name *",
+    "phoneLabel": "Phone Number (NTC/Ncell) *",
+    "emailLabel": "Email (For Confirmation Receipt)",
+    "bikeModelLabel": "Bike / Scooter Model *",
+    "serviceTypeLabel": "Service Category *",
+    "dateLabel": "Appointment Date *",
+    "timeLabel": "Select Time Slot *",
+    "notesLabel": "Specific issues or noises (optional)",
+    "payAtShopTitle": "Pay at Workshop (NPR 0 upfront)",
+    "payAtShopDesc": "Pay via Cash, Fonepay, or eSewa after inspection & test ride.",
+    "onlineDepositTitle": "Pay NPR 100 Advance Slot Deposit",
+    "onlineDepositDesc": "Guarantees priority bay allocation with zero waiting time.",
+    "reminderOptIn": "Send me a scheduled service reminder via SMS/Email in 3 months",
+    "submitBtn": "Confirm Service Booking",
+    "submittingBtn": "Booking Slot...",
+    "successTitle": "Booking Successfully Confirmed!",
+    "successMsg": "Your service slot has been logged. Notification sent to shop owner and confirmation dispatched.",
+    "bookingRef": "Booking Reference ID",
+    "doneBtn": "Close & Return to Site"
+  },
+  "bookingForm": {
+    "title": "Book Workshop Service Slot",
+    "subtitle": "Reserve guaranteed technician time at Naresh Moto Repair Center, Dhore.",
+    "nameLabel": "Full Name *",
+    "namePlaceholder": "e.g. Ramesh Sah",
+    "phoneLabel": "Phone Number (NTC/Ncell) *",
+    "phonePlaceholder": "e.g. 98XXXXXXXX",
+    "bikeLabel": "Bike / Scooter Model",
+    "bikePlaceholder": "e.g. Hero Splendor / Bajaj Pulsar 150",
+    "serviceLabel": "Service Needed",
+    "issuesLabel": "Additional Notes / Symptoms",
+    "issuesPlaceholder": "Describe specific issues or noises (optional)"
+  },
+  "paymentModal": {
+    "title": "Workshop Slot Deposit / Fonepay QR",
+    "subtitle": "Scan QR to pay NPR 100 deposit via eSewa, Khalti, or Mobile Banking.",
+    "qrNote": "Scan with any Nepali Mobile Banking or Digital Wallet app",
+    "accountName": "Account Name: Naresh Chauhan (Naresh Moto)",
+    "accountNo": "Phone / eSewa ID: 9829455583",
+    "txnInputLabel": "Enter 6–12 digit Transaction ID / Reference No:",
+    "confirmDepositBtn": "Verify & Attach Deposit",
+    "cancelBtn": "Cancel Deposit"
+  },
+  "legalModal": {
+    "privacyTitle": "Privacy Policy",
+    "termsTitle": "Terms of Service",
+    "cookiesTitle": "Cookie Notice",
+    "closeBtn": "Close"
+  },
+  "admin": {
+    "title": "Naresh Moto Workshop Admin Portal",
+    "subtitle": "Manage live bay queues, announcements, appointments, customer reviews, and hours override.",
+    "loginTitle": "Workshop Owner Authentication",
+    "passwordPlaceholder": "Enter admin password",
+    "loginBtn": "Sign In to Dashboard",
+    "tabQueue": "Live Queue & Bays",
+    "tabAnnouncements": "Top Announcements",
+    "tabBookings": "Appointments",
+    "tabReviews": "Review Moderation",
+    "tabHours": "Shop Hours",
+    "tabPricing": "Pricing Overrides",
+    "saveChanges": "Save Changes",
+    "saving": "Saving...",
+    "logout": "Log Out",
+    "statusPending": "Pending",
+    "statusConfirmed": "Confirmed",
+    "statusCompleted": "Completed",
+    "statusCancelled": "Cancelled",
+    "approveBtn": "Approve & Publish",
+    "rejectBtn": "Reject",
+    "deleteBtn": "Delete",
+    "addAnnouncement": "Add New Announcement",
+    "announcementTextEn": "English Banner Message",
+    "announcementTextNp": "Nepali Banner Message",
+    "actionType": "Action Type",
+    "toggleActive": "Active in Ticker"
+  },
+  "chatbot": {
+    "badge": "24/7 AI Mechanical Assistant",
+    "title": "Naresh Moto AI Assistant",
+    "subtitle": "Ask technical questions, diagnosis tips, or book a service bay.",
+    "greeting": "Namaste! I am the Naresh Moto Workshop AI Assistant. Tell me what issue your motorcycle or scooter is having (e.g. hard starting, chain noise, brake squeak), or ask for our pricing and location!",
+    "placeholder": "Describe your bike problem or ask a question...",
+    "send": "Send",
+    "quickDiagnostic": "Why is my bike losing power?",
+    "quickTiming": "What are your garage hours?",
+    "quickCost": "How much is General Servicing?"
+  },
+  "referral": {
+    "title": "Rider Rewards & Referral Discount",
+    "subtitle": "Share your personal promo code with fellow riders in Dhore. Both of you get 10% off service labor!",
+    "shareCode": "Your Referral Code",
+    "copyBtn": "Copy Code",
+    "copied": "Copied to Clipboard!",
+    "instruction": "Show this code at our workshop counter during billing to receive your discount.",
+    "haveFriendCode": "Have a Friend's Code?",
+    "enterCodeDesc": "Enter their code to activate your 10% discount on today's repair.",
+    "codePlaceholder": "e.g. MOTO-1234",
+    "phonePlaceholder": "Your Phone Number",
+    "applyBtn": "Apply 10% Discount",
+    "appliedSuccess": "10% Discount Applied! We've logged this code for your workshop visit."
+  },
+  "notFound": {
+    "badge": "404 - Road Not Found",
+    "title": "Looks like you took a wrong turn.",
+    "desc": "The page you are looking for does not exist or has moved. Let us guide you back to Naresh Moto Repair Center.",
+    "backHome": "Back to Workshop Home"
+  },
+  "cookieConsent": {
+    "text": "We use local storage to remember your language preference (EN/नेपाली) and provide the best workshop booking experience.",
+    "accept": "Accept & Continue",
+    "privacyLink": "Privacy Details"
+  },
+  "pwa": {
+    "prompt": "Install Naresh Moto App on your phone for 1-tap booking & offline garage contacts.",
+    "installBtn": "Install App",
+    "dismiss": "Dismiss"
+  },
+  "liveQueue": {
+    "bikesAhead": "bikes ahead",
+    "waitEstimate": "min wait",
+    "lowWait": "Low Wait",
+    "moderateRush": "Moderate Rush",
+    "busyBays": "Busy Bays",
+    "refresh": "Refresh",
+    "update": "Update"
+  },
+  "bikeShowcase": {
+    "kicker": "Workshop Craftsmanship",
+    "headline": "Assembled with obsessive precision",
+    "subhead": "Scroll to watch each machine come together, component by component — exactly how our master technicians rebuild every bike in the bay.",
+    "assembledCaption": "Every bike that leaves our shop is put back together with this level of precision.",
+    "selectBike": "Choose a bike",
+    "prevBike": "Previous bike",
+    "nextBike": "Next bike",
+    "ariaAssembler": "Animated sequence showing a {bike} motorcycle assembling from its components",
+    "shopName": "Naresh MOTO Bike Service & Repair Center",
+    "readyTitle": "Ready for the Road",
+    "servicedNote": "Serviced with precision — genuine parts, expert hands.",
+    "swipeHint": "Swipe to explore the bikes",
+    "hoursLabel": "Open 6 AM – 8 PM daily",
+    "bikes": {
+      "ducati-monster": "Ducati Monster",
+      "bmw-r1250gs": "BMW R 1250 GS",
+      "triumph-street-triple": "Triumph Street Triple 765 RS",
+      "harley-davidson": "Harley-Davidson"
+    }
+  },
+  "whatsApp": {
+    "quickWhatsApp": "Quick WhatsApp",
+    "chatWithNaresh": "Chat with Naresh Dai",
+    "scanQr": "Scan QR",
+    "copyNumber": "Copy Phone Number",
+    "copied": "Copied!",
+    "scanTitle": "Scan WhatsApp QR Code",
+    "scanSubtitle": "Point your phone camera to chat directly with Master Mechanic Naresh.",
+    "close": "Close"
+  }
+}

@@ -1,0 +1,817 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Theme tokens */
+@layer base {
+  :root {
+    /* MASTER §3: DM Sans (body + display) + Noto Sans Devanagari fallback */
+    --font-display: 'DM Sans', 'Noto Sans Devanagari', system-ui, sans-serif;
+    --font-body:    'DM Sans', 'Noto Sans Devanagari', system-ui, sans-serif;
+    --font-mono:    'DM Sans', ui-monospace, monospace; /* tabular-nums via font-variant */
+
+    /* ── Dark Garage Tokens ── */
+    --bg-base:        #0c0e12;
+    --bg-surface:     #11141c;
+    --bg-surface-2:   #131722;
+    --bg-surface-3:   #161a27;
+    --bg-overlay:     rgba(18, 21, 28, 0.85);
+    --border-subtle:  rgba(255,255,255,0.07);
+    --border-mid:     rgba(255,255,255,0.12);
+    --text-base:      #ffffff;
+    --text-muted:     #e5e5e5;
+    --text-faint:     #e5e5e5;
+    --text-primary:   #ffffff;
+    --text-secondary: #e5e5e5;
+    --card-bg:        #131722;
+    --card-hover:     #161a27;
+    --header-bg:      rgba(13,16,23,0.95);
+    --footer-bg:      #08090d;
+    --accent:         #e03010;
+    --accent-hover:   #c22f0e;
+    --shadow-accent:  rgba(255,59,25,0.25);
+    --announcement-bg: #181c26;
+    --announcement-border: rgba(255,59,25,0.35);
+
+    /* ── Semantic status tokens (Garage Noir) ──
+       Success #34D399 = 10.5:1, Warning #FBBF24 = 11.4:1, Error #F87171 = 6.1:1,
+       Info #7DB5F7 = 9.0:1 — all ≥4.5:1 on --bg-base. */
+    --status-success: #34d399;
+    --status-warning: #fbbf24;
+    --status-error:   #f87171;
+    --status-info:    #7db5f7;
+
+    /* ── Elevation / focus / z-index tokens ── */
+    --radius-sm:   10px;
+    --radius-md:   16px;
+    --radius-lg:   24px;
+    --radius-full: 9999px;
+    --shadow-card:  0 8px 30px rgb(0 0 0 / 0.45);
+    --shadow-modal: 0 16px 50px rgb(0 0 0 / 0.6);
+    --ring-color: rgba(255, 107, 71, 0.75);
+    --ring-width: 2px;
+    --z-sticky:  30;
+    --z-fab:     40;
+    --z-popover: 45;
+    --z-modal:   50;
+    --z-toast:   60;
+
+    /* ── MASTER §2 semantic token aliases (canonical names) ── */
+    --color-bg:         var(--bg-base);
+    --color-surface:    var(--bg-surface);
+    --color-surface-2:  var(--bg-surface-2);
+    --color-fg:         var(--text-base);
+    --color-fg-muted:   var(--text-muted);
+    --color-border:     var(--border-subtle);
+    --color-accent:     var(--accent);
+    --color-accent-text:#FF6B47;
+    --color-on-accent:  #0B0D12;
+    --color-success:    var(--status-success);
+    --color-danger:     var(--status-error);
+    --color-ring:       var(--ring-color);
+
+    /* ── Motion tokens (transform/opacity only; blur limited to header+modals) ── */
+    --dur-fast:    150ms;
+    --dur-base:    200ms;
+    --dur-slow:    250ms;
+    --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  /* ── Clean Light Tokens (MASTER: Studio White) ── */
+  html.light {
+    --bg-base:        #F7F8FA;
+    --bg-surface:     #FFFFFF;
+    --bg-surface-2:   #EFF1F5;
+    --bg-surface-3:   #e8ecf2;
+    --bg-overlay:     rgba(255,255,255,0.92);
+    --border-subtle:  #E2E6ED;
+    --border-mid:     rgba(0,0,0,0.12);
+    --text-base:      #000000;
+    --text-muted:     #404040;
+    --text-faint:     #525252;
+    --text-primary:   #171717;
+    --text-secondary: #262626;
+    --card-bg:        #FFFFFF;
+    --card-hover:     #f8f9fc;
+    --header-bg:      rgba(255,255,255,0.97);
+    --footer-bg:      #1a1d24;
+    --accent:         #E03010;
+    --accent-hover:   #B92D10;
+    --shadow-accent:  rgba(255,59,25,0.18);
+    --announcement-bg: #fff4f1;
+    --announcement-border: rgba(255,59,25,0.25);
+
+    /* ── Semantic status tokens (Studio White) ── */
+    --status-success: #059669;
+    --status-warning: #b45309;
+    --status-error:   #DC2626;
+    --status-info:    #1D4ED8;
+
+    --shadow-card:  0 2px 10px rgb(15 18 25 / 0.06);
+    --shadow-modal: 0 12px 40px rgb(15 18 25 / 0.12);
+    --ring-color: rgba(194, 47, 14, 0.7);
+
+    /* MASTER §2 light theme alias overrides */
+    --color-accent-text: #C22F0E;
+    --color-on-accent:   #0B0D12;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Theme cross-fade (transform+opacity, MASTER §4) */
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  }
+
+  ::selection {
+    background-color: #60bb46;
+    color: #ffffff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    body { transition: none !important; }
+  }
+
+  /* MASTER §3: DM Sans for all headings, display text — no Syne */
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Nepali (Devanagari) typography rules — MASTER §3 ──
+     No negative tracking (breaks conjuncts), taller line boxes, no uppercase labels. */
+  :lang(ne) body,
+  body:lang(ne),
+  html[lang="ne"] :lang(ne),
+  html[lang="ne"] body {
+    line-height: 1.6 !important;
+  }
+  html[lang="ne"] h1,
+  html[lang="ne"] h2,
+  html[lang="ne"] h3,
+  html[lang="ne"] .font-display {
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
+  }
+  html[lang="ne"] * {
+    letter-spacing: 0 !important;
+  }
+  html[lang="ne"] .uppercase,
+  html[lang="ne"] .tracking-wider,
+  html[lang="ne"] .tracking-widest {
+    letter-spacing: 0 !important;
+  }
+
+  /* ── Focus ring from tokens (visible keyboard focus in both themes) ── */
+  :focus-visible {
+    outline: var(--ring-width) solid var(--ring-color);
+    outline-offset: 2px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 1;
+  }
+
+  /* ── Devanagari glyph fallback for Nepali strings (MASTER §3) ── */
+  /* DM Sans has no Devanagari glyphs — Noto Sans Devanagari fills in automatically
+     via the cascade. Explicitly reinforcing for form elements to avoid UA defaults. */
+  html[lang="ne"] body,
+  html[lang="ne"] button,
+  html[lang="ne"] input,
+  html[lang="ne"] textarea,
+  html[lang="ne"] select {
+    font-family: 'DM Sans', 'Noto Sans Devanagari', system-ui, sans-serif;
+  }
+
+  .font-mono-numbers {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+/* Theme-aware utilities */
+.theme-bg-base      { background-color: var(--bg-base); }
+.theme-bg-surface   { background-color: var(--bg-surface); }
+.theme-bg-surface-2 { background-color: var(--bg-surface-2); }
+.theme-bg-surface-3 { background-color: var(--bg-surface-3); }
+.theme-text-base    { color: var(--text-base); }
+.theme-text-muted   { color: var(--text-muted); }
+.theme-text-faint   { color: var(--text-faint); }
+.text-accent-text   { color: var(--color-accent-text); }
+.theme-border-subtle { border-color: var(--border-subtle); }
+.theme-border-mid   { border-color: var(--border-mid); }
+.theme-card         { background-color: var(--card-bg); border: 1px solid var(--border-subtle); }
+.theme-card:hover   { background-color: var(--card-hover); }
+
+@utility text-primary {
+  color: var(--text-primary);
+}
+
+@utility text-secondary {
+  color: var(--text-secondary);
+}
+
+@utility text-muted-contrast {
+  color: var(--text-muted);
+}
+
+/* Keep neutral utility text crisp and predictable in both themes. */
+html.light [class~="text-neutral-100"],
+html.light [class~="text-neutral-200"],
+html.light [class~="text-neutral-300"],
+html.light [class~="text-neutral-400"],
+html.light [class~="text-neutral-500"] { color: #525252 !important; }
+html.light [class~="text-neutral-600"] { color: #404040 !important; }
+html.light [class~="text-neutral-700"] { color: #262626 !important; }
+html.light [class~="text-neutral-800"] { color: #171717 !important; }
+html.light [class~="text-neutral-900"] { color: #000000 !important; }
+html.dark [class~="text-neutral-100"],
+html.dark [class~="text-neutral-300"],
+html.dark [class~="text-neutral-400"],
+html.dark [class~="text-neutral-500"],
+html.dark [class~="text-neutral-600"],
+html.dark [class~="text-neutral-700"],
+html.dark [class~="text-neutral-800"] { color: #e5e5e5 !important; }
+html.dark [class~="text-neutral-900"] { color: #ffffff !important; }
+
+/* Motion feedback shared by links and controls. Uses the independent `scale`
+   property so existing translate/transform effects keep their layout behavior. */
+@media (prefers-reduced-motion: no-preference) {
+  button:not(:disabled), a[href] {
+    transition-property: transform, opacity, scale;
+    transition-duration: 180ms;
+    transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  button:not(:disabled):hover, a[href]:hover { scale: 1.02; }
+  button:not(:disabled):active, a[href]:active { scale: 0.98; }
+}
+
+/* ── Tailwind 4 theme mapping: semantic color utilities driven by the runtime
+   theme vars (bg-accent, text-muted, text-success, border-subtle …). `inline`
+   makes utilities emit var() references so both themes switch live. ── */
+@theme inline {
+  /* Legacy bg-* utilities (keep existing usages working) */
+  --color-base:          var(--bg-base);
+  --color-surface:       var(--bg-surface);
+  --color-surface-2:     var(--bg-surface-2);
+  --color-surface-3:     var(--bg-surface-3);
+  --color-fg:            var(--text-base);
+  --color-muted:         var(--text-muted);
+  --color-faint:         var(--text-faint);
+  --color-accent:        var(--accent);
+  --color-accent-hover:  var(--accent-hover);
+  --color-success:       var(--status-success);
+  --color-warning:       var(--status-warning);
+  --color-error:         var(--status-error);
+  --color-info:          var(--status-info);
+  /* MASTER §2 radius tokens */
+  --radius-token-sm:     var(--radius-sm);
+  --radius-token-md:     var(--radius-md);
+  --radius-token-lg:     var(--radius-lg);
+  --radius-token-full:   var(--radius-full);
+}
+
+/* ── Z-index layer utilities (single placement system — MASTER §6) ── */
+.z-sticky   { z-index: var(--z-sticky); }
+.z-fab      { z-index: var(--z-fab); }
+.z-popover  { z-index: var(--z-popover); }
+.z-modal    { z-index: var(--z-modal); }
+.z-toast    { z-index: var(--z-toast); }
+
+/* ── Stage 3 motion system — one orchestrated entrance per section ──
+   transform/opacity only · 450ms slow token · stagger via --reveal-delay.
+   Elements start hidden ONLY when JS is running (html.js) so content is
+   never lost if the observer never runs. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+html.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 450ms var(--ease-out),
+    transform 450ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* View transitions — only where views actually change (legal modal, blog
+   article, 404, admin): subtle rise + fade on the panel, 250ms base token. */
+@keyframes view-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-view-in {
+  animation: view-in 250ms var(--ease-out) both;
+}
+
+@keyframes view-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-view-fade {
+  animation: view-fade 280ms var(--ease-out) both;
+}
+
+header[data-hash-nav] .nav-hash-link {
+  position: relative;
+}
+header[data-hash-nav] .nav-hash-link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -0.25rem;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms var(--ease-out);
+}
+header[data-hash-nav] .nav-hash-link:hover::after,
+header[data-hash-nav] .nav-hash-link:focus-visible::after {
+  transform: scaleX(1);
+}
+body:has(#home:target) header[data-hash-nav] .nav-hash-link[href="#home"]::after,
+body:has(#what-rolls-in:target) header[data-hash-nav] .nav-hash-link[href="#what-rolls-in"]::after,
+body:has(#services:target) header[data-hash-nav] .nav-hash-link[href="#services"]::after,
+body:has(#why-us:target) header[data-hash-nav] .nav-hash-link[href="#why-us"]::after,
+body:has(#pricing:target) header[data-hash-nav] .nav-hash-link[href="#pricing"]::after,
+body:has(#blog:target) header[data-hash-nav] .nav-hash-link[href="#blog"]::after,
+body:has(#gallery:target) header[data-hash-nav] .nav-hash-link[href="#gallery"]::after,
+body:has(#reviews:target) header[data-hash-nav] .nav-hash-link[href="#reviews"]::after,
+body:has(#about:target) header[data-hash-nav] .nav-hash-link[href="#about"]::after,
+body:has(#faq:target) header[data-hash-nav] .nav-hash-link[href="#faq"]::after,
+body:has(#contact:target) header[data-hash-nav] .nav-hash-link[href="#contact"]::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header[data-hash-nav] .nav-hash-link::after {
+    transition: none;
+  }
+}
+
+/* Opt-in stagger is reserved for short card grids, never long data lists. */
+html.js [data-reveal-stagger] > :nth-child(-n + 4) {
+  opacity: 0;
+  transform: translateY(12px);
+}
+html.js [data-reveal-stagger].is-visible > :nth-child(-n + 4) {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ui-motion-card {
+    transition: transform 280ms var(--ease-out);
+  }
+  .ui-motion-card:hover,
+  .ui-motion-card:focus-within {
+    transform: translateY(-3px);
+  }
+  .ui-image-zoom {
+    transition: transform 550ms var(--ease-out);
+  }
+  .group:hover .ui-image-zoom {
+    transform: scale(1.04);
+  }
+  .service-icon-motion {
+    transition: transform 350ms var(--ease-out);
+    transform-origin: center;
+  }
+  .group:hover .service-icon-wrench { transform: rotate(-8deg); }
+  .group:hover .service-icon-gear { transform: rotate(35deg); }
+  .group:hover .service-icon-motion:not(.service-icon-wrench):not(.service-icon-gear) {
+    transform: scale(1.06);
+  }
+  .site-footer ul a[href] {
+    position: relative;
+  }
+  .site-footer ul a[href]::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -2px;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 220ms var(--ease-out);
+  }
+  .site-footer ul a[href]:hover::after,
+  .site-footer ul a[href]:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ui-feedback-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes ui-loading-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]),
+  textarea,
+  select,
+  .ui-input-control {
+    transition: transform 160ms var(--ease-out);
+  }
+  input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  .ui-input-control:focus-visible {
+    transform: scale(1.005);
+  }
+  [role="alert"],
+  [role="status"],
+  .ui-feedback-in {
+    animation: ui-feedback-in 240ms var(--ease-out) both;
+  }
+  .ui-submit-loading[aria-busy="true"] {
+    position: relative;
+  }
+  .ui-submit-loading[aria-busy="true"]::after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 0.45rem);
+    right: 1rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: ui-loading-spin 800ms linear infinite;
+  }
+}
+
+@keyframes ui-admin-feedback-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .admin-dashboard [role="alert"],
+  .admin-dashboard [role="status"] {
+    animation: ui-admin-feedback-fade 200ms var(--ease-out) both;
+  }
+}
+html.js [data-reveal-stagger].is-visible > :nth-child(2) { transition-delay: 45ms; }
+html.js [data-reveal-stagger].is-visible > :nth-child(3) { transition-delay: 90ms; }
+html.js [data-reveal-stagger].is-visible > :nth-child(4) { transition-delay: 135ms; }
+
+/* Low-end tier: JS adds .low-tier (deviceMemory ≤ 4 / cores ≤ 4 / saveData).
+   Kills backdrop blur outside header/modals and all decorative motion. */
+html.low-tier .dark-surface,
+html.low-tier .backdrop-blur-sm:not(header *):not([role="dialog"] *):not(.z-modal *):not(header):not([role="dialog"]) {
+  backdrop-filter: none !important;
+}
+html.low-tier [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Reduced motion: reveals become opacity-only (no parallax-like movement). */
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none !important;
+  }
+  html.js [data-reveal-stagger] > :nth-child(-n + 4) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .animate-view-in,
+  .animate-view-fade {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Interactive cursor parity (Tailwind 4 buttons default to cursor:default) */
+@layer base {
+  button:not(:disabled),
+  [role="button"],
+  [role="tab"],
+  summary,
+  a[href] {
+    cursor: pointer;
+  }
+}
+
+/* Touch targets: every control reaches 44px height on coarse pointers
+   (icon-only buttons included) without squeezing desktop layouts. */
+@media (pointer: coarse) {
+  button:not(:disabled),
+  a[href][role="button"] {
+    min-height: 44px;
+  }
+}
+
+/* Subtle garage grid background */
+.garage-grid-pattern {
+  background-image: radial-gradient(rgba(255, 65, 34, 0.08) 1px, transparent 1px),
+                    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+html.light .garage-grid-pattern {
+  background-image: radial-gradient(rgba(232, 52, 15, 0.05) 1px, transparent 1px),
+                    radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Shared pulse for open status and call actions */
+@keyframes ring-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(255, 59, 25, 0.6); }
+  70%  { box-shadow: 0 0 0 12px rgba(255, 59, 25, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 59, 25, 0); }
+}
+
+.animate-call-pulse {
+  animation: ring-pulse 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes green-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70%  { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.animate-live-green {
+  animation: green-pulse 2.2s infinite ease-out;
+}
+
+/* ----------------------------------------------------------------
+   High contrast racing accent glow
+---------------------------------------------------------------- */
+.racing-glow {
+  box-shadow: 0 0 30px -5px rgba(255, 59, 25, 0.35);
+}
+
+.amber-glow {
+  box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.3);
+}
+
+/* ----------------------------------------------------------------
+   Floating WhatsApp Entry Animation
+---------------------------------------------------------------- */
+@keyframes float-slide-in {
+  0%   { opacity: 0; transform: translate3d(40px, 12px, 0) scale(0.92); }
+  60%  { opacity: 0.95; transform: translate3d(-4px, -2px, 0) scale(1.02); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+.animate-float-in {
+  animation: float-slide-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ----------------------------------------------------------------
+   Spring Bounce Animation for Copied Feedback
+---------------------------------------------------------------- */
+@keyframes spring-pop {
+  0%   { transform: scale(0.65) rotate(-15deg); }
+  40%  { transform: scale(1.35) rotate(5deg); }
+  70%  { transform: scale(0.9) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-spring-pop {
+  animation: spring-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ----------------------------------------------------------------
+   Announcement bar message slide animation
+---------------------------------------------------------------- */
+@keyframes slide-up-fade {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up-fade 0.35s ease forwards;
+}
+
+/* ----------------------------------------------------------------
+   Language toggle text fade
+---------------------------------------------------------------- */
+.lang-fade-enter {
+  animation: lang-fade 0.2s ease forwards;
+}
+@keyframes lang-fade {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ----------------------------------------------------------------
+   Glass card styling
+---------------------------------------------------------------- */
+.dark-surface {
+  background: var(--bg-overlay);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+}
+
+.dark-surface-hover:hover {
+  border-color: rgba(255, 75, 43, 0.4);
+  background: var(--card-hover);
+}
+
+.glass-card-dark {
+  background: rgba(19, 22, 34, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(96, 187, 70, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(96, 187, 70, 0.6); }
+}
+
+.animate-glow {
+  animation: pulseGlow 3s infinite;
+}
+
+.button-micro-interaction {
+  transform: translateY(0);
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms ease;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .button-micro-interaction:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -10px rgba(96, 187, 70, 0.4);
+  }
+
+  .button-micro-interaction:not(:disabled):active {
+    transform: translateY(0);
+  }
+}
+
+/* ----------------------------------------------------------------
+   Bike Assembly Animation — Spark particles
+---------------------------------------------------------------- */
+@keyframes spark-float {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
+  50%  { opacity: 0.8; transform: translate(calc(-20px + 40px * var(--rand, 0.5)), -30px) scale(0.7); }
+  100% { opacity: 0; transform: translate(calc(-30px + 60px * var(--rand, 0.5)), -60px) scale(0.2); }
+}
+
+/* ----------------------------------------------------------------
+   Bike Assembly — Headlight beam fade-in after completion
+---------------------------------------------------------------- */
+@keyframes headlight-beam-on {
+  0%   { opacity: 0; }
+  60%  { opacity: 0.4; }
+  100% { opacity: 0.25; }
+}
+
+.animate-headlight-on {
+  animation: headlight-beam-on 1s ease-out 0.3s forwards;
+}
+
+/* ----------------------------------------------------------------
+   Bike Showcase — nameplate masked slide + swipe hint chevrons
+---------------------------------------------------------------- */
+@keyframes mask-slide-up {
+  from {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-mask-slide-up {
+  animation: mask-slide-up 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes swipe-hint-left {
+  0%, 100% { transform: translateX(0); opacity: 0.35; }
+  50% { transform: translateX(-6px); opacity: 0.9; }
+}
+
+@keyframes swipe-hint-right {
+  0%, 100% { transform: translateX(0); opacity: 0.35; }
+  50% { transform: translateX(6px); opacity: 0.9; }
+}
+
+.animate-swipe-hint-left { animation: swipe-hint-left 1.6s ease-in-out infinite; }
+.animate-swipe-hint-right { animation: swipe-hint-right 1.6s ease-in-out infinite; }
+
+/* ----------------------------------------------------------------
+   Bike Assembly — Flash effect on completion
+---------------------------------------------------------------- */
+@keyframes assembly-flash {
+  0%   { opacity: 0; }
+  15%  { opacity: 0.12; }
+  100% { opacity: 0; }
+}
+
+.animate-assembly-flash {
+  animation: assembly-flash 0.6s ease-out forwards;
+}
+
+/* ----------------------------------------------------------------
+   Reduced motion accessibility
+---------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ----------------------------------------------------------------
+   Fade-in utility (PwaInstallPrompt, AfterHoursChatbot panel)
+   transform/opacity only per MASTER §4
+---------------------------------------------------------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fadeIn 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Shared clearance for the fixed bottom controls and page content. */
+:root {
+  --mobile-sticky-h: 60px;
+  --desktop-fab-h: 52px;
+  --desktop-fab-bottom: 24px;
+  --fixed-ui-bottom-clearance: calc(var(--mobile-sticky-h) + env(safe-area-inset-bottom) + 16px);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --fixed-ui-bottom-clearance: calc(var(--desktop-fab-h) + var(--desktop-fab-bottom) + 16px + env(safe-area-inset-bottom));
+  }
+}
+
+.fixed-ui-safe-section {
+  padding-bottom: calc(5rem + var(--fixed-ui-bottom-clearance));
+}
+
+.fixed-ui-safe-footer {
+  padding-bottom: calc(3rem + var(--fixed-ui-bottom-clearance));
+}
+
+.fixed-ui-bottom-left {
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  left: calc(1.5rem + env(safe-area-inset-left));
+}
+
+.fixed-ui-bottom-right {
+  bottom: calc(1.5rem + env(safe-area-inset-bottom));
+  right: calc(1.5rem + env(safe-area-inset-right));
+}
+
+.cookie-consent-safe-position {
+  bottom: calc(var(--mobile-sticky-h) + env(safe-area-inset-bottom) + 0.5rem);
+}
+
+@media (min-width: 640px) {
+  .cookie-consent-safe-position {
+    bottom: calc(var(--desktop-fab-h) + var(--desktop-fab-bottom) + 1rem + env(safe-area-inset-bottom));
+  }
+}
