@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://naresh-moto-repair-center-api.onrender.com/api/:path*"
+    }
+  ]
+}
