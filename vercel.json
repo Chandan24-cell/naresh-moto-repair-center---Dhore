@@ -3,6 +3,14 @@
     {
       "source": "/api/:path*",
       "destination": "https://naresh-moto-repair-center-api.onrender.com/api/:path*"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/admin",
+      "destination": "/index.html"
     }
   ]
 }
