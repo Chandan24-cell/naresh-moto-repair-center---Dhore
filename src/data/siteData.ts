@@ -325,7 +325,7 @@ export const REVIEWS_DATA: ReviewItem[] = [
   {
     id: "rev-1",
     author: "Rameshwar Prasad Patel",
-    location: "Dhore-14, Pipra",
+    location: "14, Pipra",
     bikeModel: "Hero Super Splendor 125",
     rating: 5,
     date: "3 days ago",
@@ -345,7 +345,7 @@ export const REVIEWS_DATA: ReviewItem[] = [
   {
     id: "rev-3",
     author: "Sunil Kumar Shah",
-    location: "Adarsh Nagar, Dhore",
+    location: "Adarsh Nagar",
     bikeModel: "Honda Shine BS4",
     rating: 5,
     date: "2 weeks ago",
@@ -355,7 +355,7 @@ export const REVIEWS_DATA: ReviewItem[] = [
   {
     id: "rev-4",
     author: "Amit Chaudhary",
-    location: "Murli, Dhore",
+    location: "Murli",
     bikeModel: "TVS NTorq 125",
     rating: 4,
     date: "1 month ago",
