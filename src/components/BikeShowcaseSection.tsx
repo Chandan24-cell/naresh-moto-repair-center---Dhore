@@ -322,7 +322,7 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
 
   useEffect(() => {
     const updateSize = () => {
-      let sm = perfFlags.has('sm');
+      let sm = window.innerWidth < 768 || perfFlags.has('sm');
       const conn = (navigator as any).connection;
       if (conn && conn.saveData) sm = true;
       const mem = (navigator as any).deviceMemory;
@@ -366,10 +366,7 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
   }, [prefersReducedMotion]);
 
   const urlFor = useCallback(
-    (bike: ShowcaseBike, n: number, size: 'lg' | 'sm' = useSmRef.current ? 'sm' : 'lg') =>
-      size === 'sm'
-        ? `/bike-frames/${bike.slug}/sm/frame-${String(n).padStart(4, '0')}.webp`
-        : `/bike-frames/${bike.slug}/ezgif-frame-${padFrame(n)}.png`,
+    (bike: ShowcaseBike, n: number) => `/bike-frames/${bike.slug}/ezgif-frame-${padFrame(n)}.png`,
     []
   );
 
@@ -524,6 +521,10 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
       scheduleRef.current();
     });
 
+    const openingFrames = [1, 2, 3].map((frame) => urlFor(SHOWCASE_BIKES[0], frame));
+    cache.retain(new Set(openingFrames));
+    openingFrames.forEach((url, index) => cache.request(url, 1000 - index));
+
     const updateTarget = () => {
       const geometry = observedScrollRef.current;
       const distance = geometry.height - window.innerHeight;
@@ -554,7 +555,6 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
 
     const updateFrames = (center: number, direction: number) => {
       const pos = posRef.current;
-      const size = useSmRef.current ? 'sm' : 'lg';
       const radius = hoverRef.current.active ? 48 : useSmRef.current ? 48 : 24;
       const requested = new Set<string>();
       const requests: { url: string; priority: number }[] = [];
@@ -569,13 +569,13 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
         }
         frames.sort((a, b) => b.priority - a.priority);
         for (const { frame, priority } of frames) {
-          const url = urlFor(targetBike, frame, size);
+          const url = urlFor(targetBike, frame);
           requested.add(url);
           requests.push({ url, priority });
         }
         if (hoverRef.current.active && bikeIndex === pos.from) {
           const targetFrame = Math.round(hoverRef.current.target);
-          const targetUrl = urlFor(targetBike, targetFrame, size);
+          const targetUrl = urlFor(targetBike, targetFrame);
           requested.add(targetUrl);
           requests.push({ url: targetUrl, priority: 1000 });
         }
@@ -1004,10 +1004,10 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
   const asmO = clamp01((scrubRef.current - 0.85) / 0.15);
 
   const ctaRow = (
-    <div className="flex flex-wrap gap-3 sm:gap-4">
+    <div className="flex flex-wrap gap-2 sm:gap-4">
       <a
         href={`tel:${BUSINESS_INFO.phoneRaw}`}
-        className="hidden sm:inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-full bg-accent text-white font-semibold text-xs sm:text-sm tracking-wide hover:bg-accent-hover transition-all active:scale-95 shadow-lg shadow-[#ff3b19]/20"
+        className="inline-flex min-h-11 items-center justify-center gap-1.5 px-2.5 py-2.5 sm:px-6 sm:py-3.5 md:gap-2 rounded-full bg-accent text-white font-semibold text-[11px] sm:text-sm tracking-wide hover:bg-accent-hover transition-all active:scale-95 shadow-lg shadow-[#ff3b19]/20"
       >
         <Phone className="w-4 h-4" />
         {tHero.callCta}
@@ -1023,7 +1023,7 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
       </a>
       <button
         onClick={onOpenBooking}
-        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-6 sm:py-3.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white font-semibold text-xs sm:text-sm hover:bg-white/10 transition-all active:scale-95"
+        className="inline-flex min-h-11 items-center justify-center gap-1.5 px-2.5 py-2.5 sm:px-6 sm:py-3.5 md:gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-xl text-white font-semibold text-[11px] sm:text-sm hover:bg-white/10 transition-all active:scale-95"
       >
         <Calendar className="w-4 h-4 text-amber-500" />
         {tHero.bookSlotCta}
@@ -1049,7 +1049,7 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
         onPointerMove={onPointerMove}
         onPointerUp={endPointer}
         onPointerCancel={endPointer}
-        className="sticky top-0 w-full h-svh overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-[#ff3b19]/60"
+        className="bike-showcase-stage sticky top-0 w-full h-svh overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-[#ff3b19]/60"
         style={{
           backgroundColor: stageBg,
           contain: 'layout paint',
@@ -1059,7 +1059,7 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
         }}
       >
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="bike-showcase-ambient absolute inset-0 pointer-events-none"
           style={{
             background: 'radial-gradient(ellipse 60% 50% at 50% 58%, #16181d 0%, #0a0b0d 55%, #050505 100%)',
             filter: perfFlags.has('noblur') ? 'none' : 'blur(2px)',
@@ -1077,7 +1077,7 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
 
         {/* Smooth fade improves title contrast without a hard shadow edge over the bike. */}
         <div
-          className="absolute inset-0 z-[1] bg-gradient-to-r from-neutral-950 via-neutral-950/70 to-transparent pointer-events-none"
+          className="bike-showcase-overlay absolute inset-0 z-[1] bg-gradient-to-r from-neutral-950 via-neutral-950/70 to-transparent pointer-events-none"
           aria-hidden="true"
         />
 
@@ -1091,26 +1091,39 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
         />
 
         <motion.div
-          className="absolute top-8 sm:top-12 inset-x-0 z-20 flex justify-center px-6 pointer-events-none"
+        className="bike-showcase-tab-scroll absolute top-3 sm:top-12 inset-x-0 z-20 flex justify-center px-3 md:px-6 pointer-events-none"
           initial="hidden"
           animate="visible"
           variants={{ hidden: {}, visible: { transition: { staggerChildren: prefersReducedMotion ? 0 : 0.1, delayChildren: 0.1 } } }}
         >
-          <div className="relative flex gap-8 sm:gap-16 text-[10px] sm:text-xs font-medium tracking-[0.2em] uppercase">
+          <div className="bike-showcase-tabs relative flex w-max min-w-full gap-2 sm:gap-16 text-[9px] sm:text-xs font-medium tracking-[0.05em] sm:tracking-[0.2em] uppercase">
             {SHOWCASE_BIKES.map((b, i) => (
               <motion.div
                 key={b.id}
+                className="bike-showcase-tab-item shrink-0"
                 variants={{ hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 }, visible: { opacity: 1, y: 0, transition: { duration: prefersReducedMotion ? 0 : 0.45, ease: 'easeOut' } } }}
               >
                 <div
                   ref={(el) => { itemRefs.current[i] = el; }}
-                  className="flex flex-col items-center gap-2 pb-2 transition-opacity duration-500"
+                  className="flex min-h-11 items-center justify-center transition-opacity duration-200 md:min-h-0"
                   style={{ opacity: i === activeBikeIdx ? 1 : 0.4 }}
                 >
-                  <span className="text-white/60 font-mono">{b.id}</span>
-                  <span className={`font-semibold transition-colors duration-300 ${i === activeBikeIdx ? 'text-white' : 'text-white/50'}`}>
-                    {b.name}
-                  </span>
+                  <button
+                    type="button"
+                    aria-label={`Show ${b.name}`}
+                    aria-pressed={i === activeBikeIdx}
+                    onClick={() => {
+                      if (window.matchMedia('(max-width: 767px)').matches && i !== activeBikeIdx) {
+                        switchTo(i, i > activeBikeIdx ? -1 : 1);
+                      }
+                    }}
+                    className="pointer-events-auto flex min-h-11 flex-col items-center justify-center gap-1 whitespace-nowrap border-0 bg-transparent px-0.5 pb-2 text-center [font:inherit] [color:inherit] md:min-h-0 md:gap-2 md:px-0 md:cursor-default"
+                  >
+                    <span className="text-white/60 font-mono">{b.id}</span>
+                    <span className={`font-semibold transition-colors duration-200 md:duration-300 ${i === activeBikeIdx ? 'text-white' : 'text-white/50'}`}>
+                      {b.name}
+                    </span>
+                  </button>
                 </div>
               </motion.div>
             ))}
@@ -1129,10 +1142,10 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
         </motion.div>
 
         <div
-          className="absolute bottom-16 left-4 sm:bottom-20 sm:left-12 lg:bottom-24 lg:left-16 z-10 pointer-events-none w-[calc(100%-2rem)] sm:w-[calc(100%-6rem)] lg:w-[calc(100%-8rem)] max-w-2xl"
+          className="bike-showcase-copy absolute bottom-[calc(var(--mobile-sticky-h)+env(safe-area-inset-bottom)+4.5rem)] left-3 md:bottom-20 md:left-12 lg:bottom-24 lg:left-16 z-10 pointer-events-none w-[calc(100%-1.5rem)] md:w-[calc(100%-6rem)] lg:w-[calc(100%-8rem)] max-w-2xl"
           style={{ opacity: heroO, visibility: heroO < 0.02 ? 'hidden' : 'visible' }}
         >
-          <div className="pointer-events-auto relative z-10 max-w-xl space-y-3 p-3 sm:space-y-6 sm:p-6">
+          <div className="pointer-events-auto relative z-10 max-w-xl space-y-2 p-2.5 sm:space-y-6 sm:p-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-black/25 backdrop-blur-xl mb-2 sm:mb-4">
               <span className={`w-2 h-2 rounded-full ${isOpenNow ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
               <span className="text-xs font-medium text-white/90 tracking-wide">
@@ -1140,10 +1153,10 @@ export default function BikeShowcaseSection({ lang, onOpenBooking }: BikeShowcas
               </span>
               <span className="text-xs text-white/50 hidden sm:inline">· {tShow.hoursLabel}</span>
             </div>
-            <h1 style={{ color: '#ffffff' }} className="max-w-[20ch] text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tighter leading-[1.05] mb-2 sm:mb-4 !text-white">
+            <h1 style={{ color: '#ffffff' }} className="max-w-[20ch] text-xl sm:text-3xl lg:text-4xl font-bold tracking-tighter leading-[1.05] mb-2 sm:mb-4 !text-white">
               {tShow.shopName}
             </h1>
-            <p style={{ color: 'rgba(255,255,255,0.96)' }} className="hidden sm:block text-sm lg:text-base max-w-xl leading-relaxed mb-5 !text-white/90">
+            <p style={{ color: 'rgba(255,255,255,0.96)' }} className="block text-xs sm:text-sm lg:text-base max-w-xl leading-relaxed mb-3 sm:mb-5 !text-white/90">
               {tHero.subtitle}
             </p>
             {ctaRow}

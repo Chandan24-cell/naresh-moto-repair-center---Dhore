@@ -132,7 +132,7 @@ export default function AfterHoursChatbot({ lang = 'en', theme = 'dark' }: After
   return (
     <>
       {/* Floating Chat Launcher Button (left-bottom on desktop, hidden on mobile) */}
-      <div className="fixed fixed-ui-bottom-left z-fab">
+      <div className="mobile-assistant-fab fixed fixed-ui-bottom-left z-fab">
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}

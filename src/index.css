@@ -810,6 +810,71 @@ html.light .garage-grid-pattern {
   bottom: calc(var(--mobile-sticky-h) + env(safe-area-inset-bottom) + 0.5rem);
 }
 
+/* The showcase follows the announcement and header, so its mobile stage fits the remaining viewport. */
+@media (max-width: 767px) {
+  .bike-showcase-stage {
+    height: calc(100vh - 6.5rem);
+    height: calc(100svh - 6.5rem);
+  }
+
+  /* The renderer supplies a 16:9 canvas; preserve that ratio inside tall and short viewports. */
+  .bike-showcase-stage canvas {
+    inset: auto;
+    top: 22%;
+    left: 50%;
+    width: min(100vw, calc((100vh - 6.5rem) * 1.77778));
+    width: min(100vw, calc((100svh - 6.5rem) * 1.77778));
+    height: auto;
+    aspect-ratio: 16 / 9;
+    transform: translate(-50%, -50%);
+  }
+
+  .bike-showcase-ambient {
+    filter: none !important;
+    background: radial-gradient(ellipse 72% 62% at 50% 48%, #25282e 0%, #111317 68%, #090a0c 100%) !important;
+  }
+
+  .bike-showcase-overlay {
+    background: linear-gradient(180deg, transparent 46%, rgb(0 0 0 / 0.12) 67%, rgb(0 0 0 / 0.82) 100%) !important;
+  }
+
+  .bike-showcase-tab-scroll {
+    justify-content: flex-start;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .bike-showcase-tab-scroll::-webkit-scrollbar { display: none; }
+  .bike-showcase-tab-item { scroll-snap-align: center; }
+
+  .bike-showcase-copy > div {
+    padding-right: 4.5rem;
+  }
+
+  .mobile-assistant-fab {
+    right: calc(0.75rem + env(safe-area-inset-right));
+    bottom: calc(var(--mobile-sticky-h) + env(safe-area-inset-bottom) + 3.75rem);
+    left: auto;
+  }
+
+  .mobile-assistant-fab > button {
+    width: 2.75rem;
+    height: 2.75rem;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .mobile-assistant-fab > button > div { display: none; }
+
+  /* Keep the announcement's reserved strip from appearing empty before the reveal observer runs. */
+  html.js #top-announcement-bar[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (min-width: 640px) {
   .cookie-consent-safe-position {
     bottom: calc(var(--desktop-fab-h) + var(--desktop-fab-bottom) + 1rem + env(safe-area-inset-bottom));

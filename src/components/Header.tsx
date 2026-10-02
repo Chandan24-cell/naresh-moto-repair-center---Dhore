@@ -142,7 +142,7 @@ export default function Header({ lang, theme, onToggleLang, onToggleTheme, onOpe
     <>
       <header data-hash-nav="" className={`sticky top-0 z-40 transition-all duration-200 ${headerBg}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-3 lg:gap-4">
+          <div className="flex items-center justify-between gap-2 lg:gap-2 xl:gap-4">
 
             {/* Zone 1: Wordmark */}
             <a
@@ -154,14 +154,13 @@ export default function Header({ lang, theme, onToggleLang, onToggleTheme, onOpe
               <span className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-white shadow-md shadow-[#ff3b19]/30 group-hover:scale-105 transition-transform">
                 <Wrench className="w-4 h-4" />
               </span>
-              {/* Brand text hides on very small phones (Nepali strings are longer —
-                  MASTER: text must reflow without clipping) */}
-              <span className="font-display hidden min-[420px]:inline max-w-[30vw] truncate text-sm xl:max-w-[13rem]">Naresh MOTO Bike Service &amp; Repair Center</span>
+              {/* Keep a short wordmark visible on narrow phones; restore the full name from 420px. */}
+              <span className="font-display max-w-[30vw] truncate text-sm lg:max-w-[8rem] xl:max-w-[13rem]">Naresh MOTO<span className="hidden min-[420px]:inline"> Bike Service &amp; Repair Center</span></span>
             </a>
 
             {/* Zone 2: Desktop nav — 5 primary links + "More" dropdown.
                 whitespace-nowrap on every label guarantees a single line. */}
-            <nav className={`hidden lg:flex items-center gap-4 xl:gap-5 text-sm font-medium ${navLinkClass}`} aria-label="Primary">
+            <nav className={`hidden lg:flex items-center gap-2 xl:gap-4 text-xs xl:text-sm font-medium ${navLinkClass}`} aria-label="Primary">
               {primaryLinks.map(item => (
                 <a key={item.href} href={item.href} className={`${navLinkClass} nav-hash-link`}>{item.label}</a>
               ))}
@@ -204,7 +203,7 @@ export default function Header({ lang, theme, onToggleLang, onToggleTheme, onOpe
             </nav>
 
             {/* Zone 3: Toggles + primary actions */}
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-1 xl:gap-2 shrink-0">
 
               {/* Language Toggle — desktop only; the mobile drawer has its own
                   lang/theme row, so the 375px header stays on one line */}
@@ -255,7 +254,7 @@ export default function Header({ lang, theme, onToggleLang, onToggleTheme, onOpe
 
               <a
                 href="/admin"
-                className={`hidden sm:inline-flex items-center justify-center rounded-xl border px-3 py-2 text-[10px] font-semibold tracking-[0.12em] uppercase transition-colors ${isDark ? 'border-white/15 bg-white/5 text-white hover:border-accent/60 hover:text-accent-text' : 'border-black/10 bg-neutral-100 text-neutral-800 hover:border-accent/40 hover:text-accent-text'}`}
+                className={`hidden sm:inline-flex items-center justify-center rounded-xl border px-2 xl:px-3 py-2 text-[10px] font-semibold tracking-[0.12em] uppercase whitespace-nowrap transition-colors ${isDark ? 'border-white/15 bg-white/5 text-white hover:border-accent/60 hover:text-accent-text' : 'border-black/10 bg-neutral-100 text-neutral-800 hover:border-accent/40 hover:text-accent-text'}`}
               >
                 Admin Portal
               </a>
@@ -263,7 +262,7 @@ export default function Header({ lang, theme, onToggleLang, onToggleTheme, onOpe
               {/* Pay Now CTA */}
               <button
                 onClick={() => onOpenPayment()}
-                className="button-micro-interaction hidden md:flex px-3.5 py-2 text-xs font-bold text-emerald-900 bg-emerald-400 hover:bg-emerald-500 rounded-lg transition-all shadow-md shadow-emerald-500/25 cursor-pointer items-center gap-1.5"
+                className="button-micro-interaction hidden md:flex px-2 lg:px-2 xl:px-3.5 py-2 text-xs font-bold text-emerald-900 bg-emerald-400 hover:bg-emerald-500 rounded-lg transition-all shadow-md shadow-emerald-500/25 cursor-pointer items-center gap-1.5"
               >
                 <QrCode className="w-3.5 h-3.5" />
                 <span>{lang === 'en' ? 'Pay Now' : 'भुक्तानी'}</span>
@@ -272,7 +271,7 @@ export default function Header({ lang, theme, onToggleLang, onToggleTheme, onOpe
               {/* Book CTA */}
               <button
                 onClick={() => onOpenBooking()}
-                className="button-micro-interaction px-3.5 py-2 text-xs font-bold text-white bg-accent hover:bg-accent-hover rounded-lg transition-all shadow-md shadow-[#ff3b19]/25 hover:shadow-[#ff3b19]/40 whitespace-nowrap active:scale-95 cursor-pointer flex items-center gap-1.5"
+                className="button-micro-interaction px-2 lg:px-2 xl:px-3.5 py-2 text-xs font-bold text-white bg-accent hover:bg-accent-hover rounded-lg transition-all shadow-md shadow-[#ff3b19]/25 hover:shadow-[#ff3b19]/40 whitespace-nowrap active:scale-95 cursor-pointer flex items-center gap-1.5"
               >
                 <Calendar className="w-3.5 h-3.5" />
                 <span>{t.bookService}</span>
@@ -412,6 +411,13 @@ export default function Header({ lang, theme, onToggleLang, onToggleTheme, onOpe
                     {item.label}
                   </a>
                 ))}
+                <a
+                  href="/admin"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`mt-3 flex items-center justify-center rounded-xl border px-3 py-2 text-[10px] font-semibold tracking-[0.12em] uppercase transition-colors ${isDark ? 'border-white/15 bg-white/5 text-white hover:border-accent/60 hover:text-accent-text' : 'border-black/10 bg-neutral-100 text-neutral-800 hover:border-accent/40 hover:text-accent-text'}`}
+                >
+                  Admin Portal
+                </a>
               </nav>
             </div>
 
