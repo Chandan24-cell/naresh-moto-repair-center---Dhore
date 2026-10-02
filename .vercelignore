@@ -3,7 +3,7 @@ dist/
 .env
 .env.*
 .freebuff/
-data/
+/data/
 build-server/
 .vercel/
 .git/
